@@ -16,6 +16,7 @@
 package app.cash.paparazzi.gradle
 
 import app.cash.paparazzi.gradle.instrumentation.ResourcesCompatVisitorFactory
+import app.cash.paparazzi.gradle.instrumentation.ThreadNicenessVisitorFactory
 import app.cash.paparazzi.gradle.reporting.DiffImage
 import app.cash.paparazzi.gradle.reporting.PaparazziTestReporter
 import app.cash.paparazzi.gradle.utils.artifactViewFor
@@ -164,6 +165,10 @@ public class PaparazziPlugin @Inject constructor(
         val testInstrumentation = testVariant.instrumentation
         testInstrumentation.transformClassesWith(
           ResourcesCompatVisitorFactory::class.java,
+          InstrumentationScope.ALL
+        ) { }
+        testInstrumentation.transformClassesWith(
+          ThreadNicenessVisitorFactory::class.java,
           InstrumentationScope.ALL
         ) { }
         testInstrumentation.setAsmFramesComputationMode(
