@@ -420,7 +420,7 @@ public class PaparazziPlugin @Inject constructor(
     val dependency = if (isInternal()) {
       dependencies.project(mapOf("path" to ":paparazzi"))
     } else {
-      dependencies.create("app.cash.paparazzi:paparazzi:$VERSION")
+      dependencies.create("com.mxalbert.paparazzi:paparazzi:$VERSION")
     }
 
     val allowedConfigs = mutableSetOf<String>()
@@ -463,7 +463,7 @@ public class PaparazziPlugin @Inject constructor(
         if (configName in allowedConfigs) return@forEach
         val config = configurations.findByName(configName) ?: return@forEach
         val hasPaparazzi = config.dependencies.any {
-          it.group == "app.cash.paparazzi" && it.name == "paparazzi"
+          it.group == "com.mxalbert.paparazzi" && it.name == "paparazzi"
         }
         check(!hasPaparazzi) {
           "Paparazzi must not be declared in '$configName', as it should only resolve on Android JVM tests."

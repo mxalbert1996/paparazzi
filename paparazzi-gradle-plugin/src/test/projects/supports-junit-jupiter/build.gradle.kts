@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
   id("com.android.library")
-  id("app.cash.paparazzi")
+  id("com.mxalbert.paparazzi")
 }
 
 android {

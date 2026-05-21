@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'org.jetbrains.kotlin.plugin.compose'
-apply plugin: 'app.cash.paparazzi'
+apply plugin: 'com.mxalbert.paparazzi'
 apply plugin: 'jacoco'
 
 android {
